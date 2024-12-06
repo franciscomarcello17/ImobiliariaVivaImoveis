@@ -1,0 +1,223 @@
+/* Hero Section */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+    background-color: #F4F9FF;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 2.8em;
+    margin-bottom: 20px;
+    color: #003C80;
+    font-weight: bold;
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    color: #7C8893;
+    line-height: 1.6;
+}
+
+/* Formulário de Contato */
+.contact-form {
+    padding: 50px;
+    background-color: #F9FBFF;
+    text-align: center;
+}
+
+.contact-form-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+/* Centralizar o título dentro do card */
+.contact-form-card h2 {
+    font-size: 2.5em;
+    color: #003C80;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.form-group label {
+    font-size: 1.1em;
+    color: #003C80;
+    margin-bottom: 10px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;  /* Todos os campos têm 100% de largura */
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid #CCC;
+    margin: 0;  /* Remover qualquer margem extra */
+    box-sizing: border-box;  /* Importante para garantir que o padding não afete a largura */
+}
+
+input::placeholder,
+textarea::placeholder {
+    font-size: 0.9em;
+    color: #A0A0A0;
+}
+
+textarea {
+    resize: vertical;
+    height: 150px; /* Aumentar a altura do campo de mensagem */
+}
+
+select {
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid #CCC;
+}
+
+.btn-submit {
+    padding: 15px 30px; /* Aumentar o tamanho do botão */
+    background-color: #003C80;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    width: 30%;  /* Faz o botão ocupar toda a largura do card */
+    margin: 30px auto 0; /* Centralizar o botão */
+    font-size: 1.1em;  /* Aumentar o tamanho da fonte do botão */
+}
+
+
+.btn-submit:hover {
+    background-color: #0056B3;
+}
+
+/* Informações de Contato */
+.contact-info {
+    padding: 50px;
+    background-color: #F4F9FF;
+    text-align: center;
+}
+
+.contact-info h2 {
+    font-size: 2.5em;
+    color: #003C80;
+    margin-bottom: 40px;
+}
+
+.contact-details {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.contact-item {
+    width: 30%;
+    text-align: left;
+}
+
+.contact-item h3 {
+    font-size: 1.8em;
+    color: #003C80;
+    margin-bottom: 15px;
+}
+
+.contact-item p {
+    font-size: 1.1em;
+    color: #7C8893;
+}
+
+.address .map {
+    margin-top: 20px;
+}
+
+/* Horários de Funcionamento lado a lado */
+.working-hours {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #F4F9FF;
+    border-radius: 10px;
+}
+
+.working-hours h3 {
+    font-size: 2em;
+    color: #003C80;
+    margin-bottom: 20px;
+}
+
+.working-hours-items {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.hours-item {
+    width: 45%;
+}
+
+.hours-item h4 {
+    font-size: 1.4em;
+    color: #003C80;
+    margin-bottom: 10px;
+}
+
+.hours-item p {
+    font-size: 1.1em;
+    color: #7C8893;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .contact-details {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-item {
+        width: 80%;
+        margin-bottom: 30px;
+    }
+
+    .contact-form-card {
+        padding: 20px;
+        max-width: 100%;
+    }
+
+    .working-hours-items {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hours-item {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .social-links ul {
+        text-align: center;
+    }
+}
+
+/* Mapa com tamanho menor */
+.map iframe {
+    width: 80%;
+    height: 300px;
+    border: 0;
+}

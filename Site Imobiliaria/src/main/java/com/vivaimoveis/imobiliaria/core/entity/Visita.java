@@ -1,4 +1,4 @@
-package com.vivaimoveis.imobiliaria.model;
+package com.vivaimoveis.imobiliaria.core.entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;

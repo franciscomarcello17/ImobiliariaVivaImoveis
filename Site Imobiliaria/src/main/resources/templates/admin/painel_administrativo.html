@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" th:href="@{/css/painel_administrativo.css}">
+  <link rel="stylesheet" th:href="@{/css/layout.css}">
+  <link rel="icon" type="image/x-icon" th:href="@{/images/favicon.ico}">
+  <meta charset="UTF-8">
+  <title>Painel Administrativo - Viva Imóveis</title>
+</head>
+<body>
+<div th:replace="~{layout :: header}"></div> <!-- Incluindo o header do layout -->
+
+<section th:fragment="content">
+  <!-- Hero Section com título do painel administrativo -->
+  <div class="hero">
+    <div class="hero-content">
+      <h1>Painel Administrativo</h1>
+      <p>Bem-vindo ao painel administrativo. Aqui você pode gerenciar formulários, usuários e imóveis.</p>
+    </div>
+  </div>
+
+  <!-- Opções de Gerenciamento -->
+  <section class="admin-options">
+    <div class="admin-options-card">
+      <div class="options-list">
+        <div class="option-item">
+          <a href="/contato/admin/formularios">
+            <button class="btn-admin-option">
+              <i class="fas fa-file-alt"></i> Gerenciar Formulários
+            </button>
+          </a>
+        </div>
+        <div class="option-item">
+          <a href="/admin/usuarios">
+            <button class="btn-admin-option">
+              <i class="fas fa-users"></i> Gerenciar Usuários
+            </button>
+          </a>
+        </div>
+        <div class="option-item">
+          <a href="/admin/imoveis">
+            <button class="btn-admin-option">
+              <i class="fas fa-building"></i> Gerenciar Imóveis
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<div th:replace="~{layout :: footer}"></div> <!-- Incluindo o footer do layout -->
+<div th:replace="~{layout :: script}"></div> <!-- Incluindo os scripts -->
+</body>
+</html>

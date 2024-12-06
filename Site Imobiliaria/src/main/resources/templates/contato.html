@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" th:href="@{/css/contato.css}">
+  <link rel="stylesheet" th:href="@{/css/layout.css}">
+  <link rel="icon" type="image/x-icon" th:href="@{/images/favicon.ico}">
+  <meta charset="UTF-8">
+  <title>Contato - Viva Imóveis</title>
+</head>
+<body>
+<div th:replace="~{layout :: header}"></div> <!-- Incluindo o header do layout -->
+
+<section th:fragment="content">
+  <!-- Hero Section com título de contato -->
+  <div class="hero">
+    <div class="hero-content">
+      <h1>Entre em Contato Conosco</h1>
+      <p>Estamos aqui para ajudar! Se você tem alguma dúvida ou precisa de informações, preencha o formulário abaixo ou entre em contato diretamente.</p>
+    </div>
+  </div>
+
+  <!-- Formulário de Contato -->
+  <section class="contact-form">
+    <div class="contact-form-card">
+      <h2>Formulário de Contato</h2>
+      <form action="/contato/enviar" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="name">Nome</label>
+          <input type="text" id="name" name="nome" placeholder="Digite seu nome" required>
+        </div>
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Telefone</label>
+          <input type="tel" id="phone" name="telefone" placeholder="Digite seu telefone">
+        </div>
+        <div class="form-group">
+          <label for="subject">Assunto</label>
+          <input type="text" id="subject" name="assunto" placeholder="Digite o assunto" required>
+        </div>
+        <div class="form-group">
+          <label for="urgency">Urgência</label>
+          <select id="urgency" name="urgencia" required>
+            <option value="LOW">Baixa</option>
+            <option value="MEDIUM">Média</option>
+            <option value="HIGH">Alta</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Mensagem</label>
+          <textarea id="message" name="mensagem" rows="4" placeholder="Escreva sua mensagem aqui..." required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="attachment">Anexar Arquivo (opcional)</label>
+          <input type="file" id="attachment" name="attachment">
+        </div>
+        <button type="submit" class="btn-submit">Enviar</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Informações de Contato -->
+  <section class="contact-info">
+    <h2>Informações de Contato</h2>
+    <div class="contact-details">
+      <div class="contact-item">
+        <h3>Vendas</h3>
+        <p>Telefone: (47) 99999-9999</p>
+        <p>Email: vendas@vivaimoveis.com.br</p>
+      </div>
+      <div class="contact-item">
+        <h3>Locação</h3>
+        <p>Telefone: (47) 98888-8888</p>
+        <p>Email: locacao@vivaimoveis.com.br</p>
+      </div>
+      <div class="contact-item">
+        <h3>Suporte</h3>
+        <p>Telefone: (47) 97777-7777</p>
+        <p>Email: suporte@vivaimoveis.com.br</p>
+      </div>
+    </div>
+
+    <!-- Endereço com Google Maps -->
+    <div class="address">
+      <h3>Endereço</h3>
+      <p>Rua Visconde de Taunay, 123 - Centro - Joinville, SC</p>
+      <div class="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3467.653736827533!2d-48.84888168461476!3d-26.304596683659826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94d6e6f4328470b1%3A0x25b3f67614a69d26!2sRua%20Exemplo%2C%20123%20-%20Centro%20-%20Joinville%2C%20SC!5e0!3m2!1spt-BR!2sbr!4v1605732754293!5m2!1spt-BR!2sbr" width="60%" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+      </div>
+    </div>
+
+    <!-- Horários de Funcionamento lado a lado -->
+    <div class="working-hours">
+      <h3>Horários de Funcionamento</h3>
+      <div class="working-hours-items">
+        <div class="hours-item">
+          <h4>Escritório</h4>
+          <p>Segunda a Sexta: 08:00 - 18:00</p>
+          <p>Sábado: 09:00 - 12:00</p>
+          <p>Domingo: Fechado</p>
+        </div>
+        <div class="hours-item">
+          <h4>Atendimento Online</h4>
+          <p>Segunda a Sexta: 08:00 - 20:00</p>
+          <p>Sábado: 09:00 - 14:00</p>
+          <p>Domingo: Fechado</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<div th:replace="~{layout :: footer}"></div> <!-- Incluindo o footer do layout -->
+<div th:replace="~{layout :: script}"></div> <!-- Incluindo o back-to-top -->
+
+</body>
+</html>

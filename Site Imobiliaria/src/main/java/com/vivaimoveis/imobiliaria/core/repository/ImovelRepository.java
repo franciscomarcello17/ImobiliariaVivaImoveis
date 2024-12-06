@@ -1,6 +1,6 @@
-package com.vivaimoveis.imobiliaria.repository;
+package com.vivaimoveis.imobiliaria.core.repository;
 
-import com.vivaimoveis.imobiliaria.model.Imovel;
+import com.vivaimoveis.imobiliaria.core.entity.Imovel;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

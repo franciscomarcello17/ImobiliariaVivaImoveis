@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" th:href="@{/css/layout.css}">
+    <link rel="icon" type="image/x-icon" th:href="@{/images/favicon.ico}">
+    <meta charset="UTF-8">
+    <title>Erro - Viva Imóveis</title>
+</head>
+<body>
+<div th:replace="~{layout :: header}"></div> <!-- Incluindo o header do layout -->
+
+<section th:fragment="content">
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Ocorreu um Erro!</h1>
+            <p>Infelizmente, algo deu errado ao enviar o seu formulário. Tente novamente mais tarde ou entre em contato conosco diretamente.</p>
+            <div class="buttons">
+                <a th:href="@{/}" class="btn-primary">Voltar à Página Inicial</a>
+                <a th:href="@{/contato}" class="btn btn-secondary">Tentar Novamente</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div th:replace="~{layout :: footer}"></div> <!-- Incluindo o footer do layout -->
+<div th:replace="~{layout :: script}"></div> <!-- Incluindo o back-to-top -->
+
+</body>
+</html>

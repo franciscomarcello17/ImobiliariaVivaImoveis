@@ -1,7 +1,7 @@
-package com.vivaimoveis.imobiliaria.service;
+package com.vivaimoveis.imobiliaria.core.service;
 
-import com.vivaimoveis.imobiliaria.model.Imovel;
-import com.vivaimoveis.imobiliaria.repository.ImovelRepository;
+import com.vivaimoveis.imobiliaria.core.entity.Imovel;
+import com.vivaimoveis.imobiliaria.core.repository.ImovelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

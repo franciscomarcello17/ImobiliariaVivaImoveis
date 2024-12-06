@@ -1,6 +1,6 @@
-package com.vivaimoveis.imobiliaria.repository;
+package com.vivaimoveis.imobiliaria.core.repository;
 
-import com.vivaimoveis.imobiliaria.model.Cliente;
+import com.vivaimoveis.imobiliaria.core.entity.Cliente;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ClienteRepository extends JpaRepository<Cliente, Long> {

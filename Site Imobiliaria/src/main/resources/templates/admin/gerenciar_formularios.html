@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerenciar Formulários - Viva Imóveis</title>
+    <link rel="stylesheet" th:href="@{/css/gerenciar_formularios.css}">
+    <link rel="stylesheet" th:href="@{/css/layout.css}">
+    <link rel="icon" type="image/x-icon" th:href="@{/images/favicon.ico}">
+</head>
+<body>
+<div th:replace="~{layout :: header}"></div> <!-- Incluindo o header do layout -->
+
+<section class="formulario-section">
+    <div class="formulario-card">
+        <h1>Gerenciar Formulários</h1>
+
+        <!-- Tabela de Formulários -->
+        <div class="tabela-wrapper">
+            <table>
+                <thead>
+                <tr>
+                    <th>ID <input type="text" id="filter-id" placeholder="Filtrar ID"></th>
+                    <th>Nome <input type="text" id="filter-nome" placeholder="Filtrar Nome"></th>
+                    <th>Email <input type="text" id="filter-email" placeholder="Filtrar Email"></th>
+                    <th>Assunto <input type="text" id="filter-assunto" placeholder="Filtrar Assunto"></th>
+                    <th>Urgência <input type="text" id="filter-urgencia" placeholder="Filtrar Urgência"></th>
+                    <th>Situação <input type="text" id="filter-situacao" placeholder="Filtrar Situação"></th>
+                    <th>Data de Criação <input type="text" id="filter-data-criacao" placeholder="Filtrar Data"></th>
+                    <th>Ações <button id="voltar-btn" class="voltar-btn" onclick="voltarPagina()">Voltar</button></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="formulario : ${formularios}">
+                    <td th:text="${formulario.id}"></td>
+                    <td th:text="${formulario.nome}"></td>
+                    <td th:text="${formulario.email}"></td>
+                    <td th:text="${formulario.assunto}"></td>
+                    <td th:text="${formulario.urgencia}"></td>
+                    <td th:text="${formulario.situacao}"></td>
+                    <td th:text="${#temporals.format(formulario.dataCriacao, 'dd/MM/yyyy HH:mm')}"></td>
+                    <td class="actions-cell">
+                        <button class="detalhes-btn" th:data-id="${formulario.id}" th:data-nome="${formulario.nome}" th:data-email="${formulario.email}"
+                                th:data-assunto="${formulario.assunto}" th:data-urgencia="${formulario.urgencia}"
+                                th:data-situacao="${formulario.situacao}" th:data-data-criacao="${#temporals.format(formulario.dataCriacao, 'dd/MM/yyyy HH:mm')}"
+                                th:data-mensagem="${formulario.mensagem}">
+                            Detalhes
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- Modal de Detalhes -->
+<div id="detalhes-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>Detalhes do Chamado</h2>
+        <p><strong>ID:</strong> <span id="modal-id"></span></p>
+        <p><strong>Nome:</strong> <span id="modal-nome"></span></p>
+        <p><strong>Email:</strong> <span id="modal-email"></span></p>
+        <p><strong>Assunto:</strong> <span id="modal-assunto"></span></p>
+        <p><strong>Urgência:</strong> <span id="modal-urgencia"></span></p>
+        <p><strong>Situação:</strong> <span id="modal-situacao"></span></p>
+        <p><strong>Data de Criação:</strong> <span id="modal-data-criacao"></span></p>
+
+        <div class="modal-mensagem">
+            <h3>Mensagem:</h3>
+            <p id="modal-mensagem"></p>
+        </div>
+
+        <div class="modal-actions">
+            <!-- Botões de Ativar/Desativar -->
+            <button id="ativar-btn" class="alterar-situacao" onclick="atualizarSituacao(this)">
+                Ativar
+            </button>
+            <button id="desativar-btn" class="alterar-situacao" onclick="atualizarSituacao(this)">
+                Desativar
+            </button>
+
+            <!-- Botão Excluir -->
+            <button id="excluir-btn" class="excluir-btn" onclick="excluirFormulario(this)">
+                Excluir
+            </button>
+
+        </div>
+    </div>
+</div>
+
+<!-- Script de Modal -->
+<script>
+    // Filtra as linhas da tabela com base nos filtros inseridos
+document.querySelectorAll('#filter-id, #filter-nome, #filter-email, #filter-assunto, #filter-urgencia, #filter-situacao, #filter-data-criacao')
+    .forEach(input => {
+        input.addEventListener('input', () => {
+            filterTable();
+        });
+    });
+
+function filterTable() {
+    const idFilter = document.getElementById('filter-id').value.toLowerCase();
+    const nomeFilter = document.getElementById('filter-nome').value.toLowerCase();
+    const emailFilter = document.getElementById('filter-email').value.toLowerCase();
+    const assuntoFilter = document.getElementById('filter-assunto').value.toLowerCase();
+    const urgenciaFilter = document.getElementById('filter-urgencia').value.toLowerCase();
+    const situacaoFilter = document.getElementById('filter-situacao').value.toLowerCase();
+    const dataCriacaoFilter = document.getElementById('filter-data-criacao').value.toLowerCase();
+
+    const rows = document.querySelectorAll('table tbody tr');
+
+    rows.forEach(row => {
+        const id = row.cells[0].textContent.toLowerCase();
+        const nome = row.cells[1].textContent.toLowerCase();
+        const email = row.cells[2].textContent.toLowerCase();
+        const assunto = row.cells[3].textContent.toLowerCase();
+        const urgencia = row.cells[4].textContent.toLowerCase();
+        const situacao = row.cells[5].textContent.toLowerCase();
+        const dataCriacao = row.cells[6].textContent.toLowerCase();
+
+        // Verifica se cada célula corresponde ao filtro
+        if (id.includes(idFilter) &&
+            nome.includes(nomeFilter) &&
+            email.includes(emailFilter) &&
+            assunto.includes(assuntoFilter) &&
+            urgencia.includes(urgenciaFilter) &&
+            situacao.includes(situacaoFilter) &&
+            dataCriacao.includes(dataCriacaoFilter)) {
+            row.style.display = ''; // Exibe a linha
+        } else {
+            row.style.display = 'none'; // Oculta a linha
+        }
+    });
+}
+
+// Função para voltar à página anterior
+function voltarPagina() {
+    window.history.back(); // Volta para a página anterior no histórico do navegador
+    // Ou você pode redirecionar para uma URL específica, caso prefira:
+    // window.location.href = '/pagina-anterior'; // Substitua '/pagina-anterior' pela URL desejada
+}
+
+
+    // Abre o modal com as informações do formulário
+    const detalhesBtns = document.querySelectorAll('.detalhes-btn');
+    const modal = document.getElementById('detalhes-modal');
+    const closeBtn = document.querySelector('.close-btn');
+    const excluirBtn = document.getElementById('excluir-btn');  // Botão de exclusão
+    const desativarBtn = document.getElementById('desativar-btn');  // Botão de exclusão
+    const ativarBtn = document.getElementById('ativar-btn');  // Botão de exclusão
+
+
+    detalhesBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const formulario = e.target; // O botão clicado
+
+            // Preenche o modal com os dados do formulário
+            document.getElementById('modal-id').textContent = formulario.getAttribute('data-id');
+            document.getElementById('modal-nome').textContent = formulario.getAttribute('data-nome');
+            document.getElementById('modal-email').textContent = formulario.getAttribute('data-email');
+            document.getElementById('modal-assunto').textContent = formulario.getAttribute('data-assunto');
+            document.getElementById('modal-urgencia').textContent = formulario.getAttribute('data-urgencia');
+            document.getElementById('modal-situacao').textContent = formulario.getAttribute('data-situacao');
+            document.getElementById('modal-data-criacao').textContent = formulario.getAttribute('data-data-criacao');
+            document.getElementById('modal-mensagem').textContent = formulario.getAttribute('data-mensagem');
+
+
+            // Atualiza o data-id do botão de excluirBtn, desativarBtn e ativarBtn com o ID do formulário
+            excluirBtn.setAttribute('data-id', formulario.getAttribute('data-id'));
+            desativarBtn.setAttribute('data-id', formulario.getAttribute('data-id'));
+            ativarBtn.setAttribute('data-id', formulario.getAttribute('data-id'));
+
+
+            // Exibe o modal
+            modal.style.display = 'block';
+        });
+    });
+
+    // Fecha o modal
+    closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    // Fecha o modal quando clicar fora da janela modal
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+
+function atualizarSituacao(button) {
+    var id = button.getAttribute('data-id'); // Pegando o ID do formulário no botão
+    var situacao = button.textContent.trim().toUpperCase(); // 'Ativar' ou 'Desativar'
+
+    // Mapeando o valor de "Ativar" ou "Desativar" para os valores esperados no backend
+    if (situacao === "ATIVAR") {
+        situacao = "ATIVO";
+    } else if (situacao === "DESATIVAR") {
+        situacao = "INATIVO";
+    }
+
+    // Exemplo de requisição AJAX para atualizar a situação
+    fetch('/contato/formulario/' + id + '/atualizar-situacao', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json', // Enviar como JSON
+        },
+        body: JSON.stringify({
+            situacao: situacao // Passando a nova situação para o servidor
+        })
+    })
+    .then(response => {
+        if (response.ok) {
+            alert(situacao + ' realizado com sucesso!');
+            location.reload();  // Recarrega a página para refletir a mudança
+        } else {
+            alert('Erro ao atualizar a situação!');
+        }
+    })
+    .catch(error => {
+        console.error("Erro na requisição:", error);
+        alert('Erro inesperado!');
+    });
+}
+
+function excluirFormulario(button) {
+    var id = button.getAttribute('data-id');  // Pega o ID do botão de exclusão
+
+    // Confirmação de exclusão
+    if (confirm('Tem certeza de que deseja excluir este formulário?')) {
+        // Exemplo de requisição AJAX para excluir o formulário
+        fetch('/contato/formulario/' + id + '/excluir', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json', // Enviar como JSON
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Formulário excluído com sucesso!');
+                location.reload();  // Recarrega a página para refletir a exclusão
+            } else {
+                alert('Erro ao excluir o formulário!');
+            }
+        });
+    }
+}
+
+
+</script>
+
+<div th:replace="~{layout :: footer}"></div> <!-- Incluindo o footer do layout -->
+<div th:replace="~{layout :: script}"></div> <!-- Incluindo os scripts -->
+</body>
+</html>

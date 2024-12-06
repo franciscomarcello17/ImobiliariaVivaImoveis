@@ -13,12 +13,12 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Leve sombra para separar o header */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 header img {
     height: 50px;
-    object-fit: contain; /* Garante que a imagem do logo não distorça */
+    object-fit: contain;
 }
 
 nav ul {
@@ -34,38 +34,33 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #7C8893;
+    color: #7C8893; /* Azul das fontes do menu */
     text-decoration: none;
     font-weight: bold;
     font-size: 1em;
-    padding: 10px 20px; /* Adiciona padding ao link para facilitar o hover */
-    border-radius: 5px; /* Bordas arredondadas */
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Transições suaves */
-    display: inline-block; /* Garante que o link seja um bloco para o efeito de destaque */
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
 }
 
 nav ul li a:hover {
-    background-color: #0056B3; /* Cor de fundo azul */
-    color: white; /* Muda a cor do texto para branco ao passar o mouse */
-    transform: scale(1.05); /* Aumenta ligeiramente o botão ao passar o mouse */
+    background-color: #0056B3;
+    color: white;
+    transform: scale(1.05);
 }
 
-/* Estilo específico para o botão de Login */
 nav ul li .login-btn {
-    background-color: #0056B3; /* Cor de fundo azul */
-    color: white; /* Cor do texto branca */
+    background-color: #0056B3;
+    color: white;
     font-weight: bold;
-    text-transform: uppercase; /* Deixa o texto maiúsculo */
 }
 
-/* Efeito de hover específico para o botão de Login */
 nav ul li .login-btn:hover {
-    background-color: #003C80; /* Muda para um tom de azul mais escuro quando o mouse passa */
-    transform: scale(1.05); /* Aumenta o botão um pouco ao passar o mouse */
+    background-color: #003C80;
+    transform: scale(1.05);
 }
 
-
-/* Responsividade: Menu no formato vertical para dispositivos móveis */
 @media (max-width: 768px) {
     header {
         flex-direction: column;
@@ -89,6 +84,95 @@ nav ul li .login-btn:hover {
     }
 }
 
+/* Avatar Button */
+.avatar-btn {
+    display: inline-block;
+    width: 100px; /* Ajuste o tamanho do avatar */
+    height: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: transparent;
+    position: relative;
+    transition: transform 0.3s ease; /* Para animação de aumento do avatar */
+    border: none; /* Remover qualquer borda */
+}
+
+.avatar-btn .avatar {
+    width: 100%;
+    height: 100%;
+    object-position: center; /* Garante que a imagem fique centralizada */
+}
+
+/* Avatar Button - Efeito de aumento */
+.avatar-btn:active, .avatar-btn:hover {
+    transform: scale(1.5); /* Aumenta o avatar ao ser clicado ou ao passar o mouse */
+}
+
+/* Avatar Submenu */
+.avatar-container {
+    position: relative;
+}
+
+.avatar-dropdown {
+    display: none; /* Inicialmente oculto */
+    position: absolute;
+    top: 35px;
+    right: 0;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 14px;
+    z-index: 1000; /* Garante que o submenu fique sobre os outros elementos */
+}
+
+.avatar-dropdown ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: block; /* Garante que os itens sejam alinhados verticalmente */
+}
+
+.avatar-dropdown ul li {
+    padding: 10px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.avatar-dropdown ul li a {
+    color: #7C8893; /* Azul das fontes do menu */
+    text-decoration: none;
+    display: block; /* Garante que os itens se alinhem verticalmente */
+    padding: 5px 0;
+    transition: background-color 0.3s ease;
+}
+
+.avatar-dropdown ul li a:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.avatar-dropdown ul li a i {
+    margin-right: 10px;
+}
+
+.avatar-dropdown ul li a.logout {
+    color: red;
+}
+
+/* Login Button */
+.login-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.login-btn:hover {
+    background-color: #0056b3;
+}
 
 /* Footer */
 footer {

@@ -1,0 +1,135 @@
+/* Fundo com gradiente */
+.login-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #F4F9FF, #CCE1FF);
+    padding: 20px;
+}
+
+/* Card centralizado */
+.login-card {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+/* Título e subtítulo */
+.login-card h1 {
+    font-size: 1.8em;
+    color: #003C80;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.login-card p {
+    font-size: 1em;
+    color: #7C8893;
+    margin-bottom: 20px;
+}
+
+/* Labels alinhados à esquerda */
+.login-form .form-group label {
+    display: block;
+    text-align: left;
+    font-weight: bold;
+    color: #003C80;
+    margin-bottom: 5px;
+}
+
+/* Contêiner do campo de entrada e ícone */
+.input-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border: 2px solid #E6E6E6;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 5px;
+}
+
+.input-container:focus-within {
+    border-color: #0056B3;
+}
+
+/* Ícone isolado em quadrado */
+.icon-box {
+    background-color: #F4F9FF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-right: 2px solid #E6E6E6;
+}
+
+.icon-box i {
+    color: #7C8893;
+    font-size: 1.2em;
+}
+
+/* Campo de entrada */
+.input-container input {
+    flex: 1;
+    padding: 12px;
+    font-size: 1em;
+    border: none;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+.login-form .form-group + .form-group {
+    margin-top: 15px; /* Aumente ou diminua esse valor conforme necessário */
+}
+
+/* Botão "Entrar" em destaque */
+.login-form button {
+    width: 100%;
+    padding: 12px 25px;
+    font-size: 1em;
+    background: linear-gradient(90deg, #0056B3, #0078E7);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.login-form button:hover {
+    background: linear-gradient(90deg, #003C80, #0056B3);
+    transform: translateY(-3px);
+}
+
+/* Link "Cadastre-se" como texto */
+.register-link {
+    display: block;
+    margin-top: 15px;
+    font-size: 0.9em;
+    color: #0056B3;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.register-link:hover {
+    text-decoration: underline;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .login-card {
+        padding: 20px;
+    }
+
+    .login-card h1 {
+        font-size: 1.5em;
+    }
+}

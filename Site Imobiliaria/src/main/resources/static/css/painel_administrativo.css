@@ -1,0 +1,97 @@
+/* Hero Section */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+    background-color: #F4F9FF;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 2.8em;
+    margin-bottom: 20px;
+    color: #003C80;
+    font-weight: bold;
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    color: #7C8893;
+    line-height: 1.6;
+}
+
+/* Admin Options */
+.admin-options {
+    padding: 50px;
+    background-color: #F9FBFF;
+    text-align: center;
+}
+
+.admin-options-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+/* Título da seção de gerenciamento */
+.admin-options-card h2 {
+    font-size: 2.5em;
+    color: #003C80;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+/* Lista de opções (agora com exibição em linha) */
+.options-list {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Distância entre os botões */
+    flex-wrap: wrap; /* Para garantir que em telas menores os botões quebrem para uma nova linha */
+}
+
+/* Botões de opções */
+.btn-admin-option {
+    width: 200px;  /* Largura fixa para tornar o botão quadrado */
+    height: 200px;  /* Altura igual à largura para manter o formato quadrado */
+    padding: 15px;
+    background-color: #003C80;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    text-align: center;
+}
+
+.btn-admin-option i {
+    font-size: 2em; /* Ícone maior para ocupar o espaço central do botão */
+}
+
+.btn-admin-option:hover {
+    background-color: #0056B3;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .options-list {
+        flex-direction: column;
+        gap: 20px; /* Menor distância entre os botões em dispositivos móveis */
+    }
+
+    .btn-admin-option {
+        width: 80%;  /* Fazer os botões ficarem mais estreitos em telas menores */
+        height: auto; /* Ajustar a altura em dispositivos menores */
+    }
+}

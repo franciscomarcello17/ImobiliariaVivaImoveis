@@ -1,8 +1,8 @@
 package com.vivaimoveis.imobiliaria.controller;
 
-import com.vivaimoveis.imobiliaria.model.Imovel;
-import com.vivaimoveis.imobiliaria.repository.ImovelRepository;
-import com.vivaimoveis.imobiliaria.service.ImovelService;
+import com.vivaimoveis.imobiliaria.core.entity.Imovel;
+import com.vivaimoveis.imobiliaria.core.repository.ImovelRepository;
+import com.vivaimoveis.imobiliaria.core.service.ImovelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

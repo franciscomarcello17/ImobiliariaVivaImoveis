@@ -1,0 +1,360 @@
+/* Layout do Gerenciamento de Formulários */
+
+/* Fundo com gradiente */
+.formulario-section {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #F4F9FF, #CCE1FF);
+    padding: 20px;
+}
+
+/* Card centralizado (Aumentando o tamanho do card) */
+.formulario-card {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    text-align: left;
+    width: 100%;
+    max-width: 1200px; /* Aumentando a largura do card */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+}
+
+/* Título */
+.formulario-card h1 {
+    font-size: 1.8em;
+    color: #003C80;
+    margin-bottom: 40px; /* Aumentando o espaço abaixo do título */
+    text-align: center; /* Centraliza o título */
+}
+
+/* Estilo para o formulário de filtro */
+.formulario-card form {
+    display: flex;
+    align-items: flex-start; /* Alinha os campos de entrada na parte superior */
+    justify-content: flex-start; /* Coloca os campos à esquerda */
+    gap: 20px; /* Espaçamento entre os campos */
+    width: 100%;
+    flex-direction: column; /* Faz com que os campos sejam dispostos na coluna */
+    margin-bottom: 30px;
+    height: 100%; /* Garante que o formulário ocupe toda a altura disponível */
+}
+
+/* Estilo dos campos do formulário */
+.formulario-card form label {
+    font-weight: bold;
+    color: #003C80;
+    display: block;
+    margin-bottom: 5px; /* Garantir que o label fique acima do input com espaçamento */
+}
+
+/* Estilo dos inputs */
+.formulario-card form input {
+    padding: 10px;
+    border: 2px solid #E6E6E6;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+    width: 100%; /* Garante que os inputs ocupem o máximo possível de largura */
+}
+
+/* Tamanho específico para o campo ID */
+.formulario-card form input#id {
+    width: 150px; /* Definindo um tamanho menor para o ID */
+}
+
+/* Agrupamento dos campos Nome e Email */
+.formulario-card form .nome-email {
+    display: flex;
+    gap: 20px; /* Espaçamento entre Nome e Email */
+    width: 100%; /* Certifica que ocupa a largura do formulário */
+}
+
+/* Campos de Nome e Email ocupando o espaço restante */
+.formulario-card form input#nome,
+.formulario-card form input#email {
+    width: 400px; /* Definindo largura para os campos Nome e Email */
+    flex-grow: 1; /* Faz com que esses campos ocupem o espaço restante */
+    min-width: 0; /* Para evitar que eles se expandam além do contêiner */
+}
+
+/* Botão de Filtro */
+.formulario-card form button {
+    padding: 10px 20px; /* Mesma altura dos campos de input */
+    font-size: 1em;
+    background-color: #0056B3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-top: auto; /* Empurra o botão para a parte inferior */
+    height: 44px; /* Altura do botão igual aos campos de input */
+    align-self: flex-end; /* Alinha o botão à direita */
+}
+
+.formulario-card form button:hover {
+    background-color: #003C80;
+}
+
+/* Estilos da tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    table-layout: auto; /* Permite que as colunas ajustem suas larguras conforme o conteúdo */
+    font-size: 0.875em; /* Fonte menor na tabela */
+}
+
+table th, table td {
+    position: relative;
+    padding: 4px 8px; /* Reduzido para diminuir a altura das linhas */
+    text-align: left; /* Alinha o conteúdo à esquerda por padrão */
+    border: 1px solid #E6E6E6;
+    word-wrap: break-word; /* Quebra de linha automática quando necessário */
+    line-height: 1.2; /* Altura da linha reduzida */
+}
+
+/* Estilo específico para as colunas com conteúdo centralizado */
+table th:nth-child(1),
+table td:nth-child(1),  /* ID */
+table th:nth-child(5),
+table td:nth-child(5),  /* Urgência */
+table th:nth-child(6),
+table td:nth-child(6),  /* Situação */
+/* Estilo específico para as colunas de Data de Criação */
+table th:nth-child(7),
+table td:nth-child(7) {
+    text-align: center;
+    width: 160px; /* Aumentando o tamanho da coluna Data de Criação */
+}
+table th:nth-child(8),
+table td:nth-child(8) { /* Ações */
+    text-align: center;
+    width: 120px; /* Tamanho reduzido das colunas */
+}
+
+/* Estilo para as colunas Nome, Email e Assunto */
+table td:nth-child(2),  /* Nome */
+table td:nth-child(3),  /* Email */
+table td:nth-child(4) { /* Assunto */
+    width: 250px; /* Aumenta o tamanho das colunas de Nome, Email e Assunto */
+    text-align: left;
+}
+
+/* Título da tabela */
+table th {
+    background-color: #003C80;
+    color: white;
+    text-align: center; /* Alinha todos os títulos no centro */
+
+}
+table th input {
+    width: 100%;
+    padding: 5px;
+    font-size: 0.875em;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    text-align: center; /* Alinha todos os títulos no centro */
+}
+
+/* Adicionar um pouco de espaçamento para evitar que o input encoste nas bordas */
+table th input:focus {
+    border-color: #0056B3;
+    outline: none;
+}
+
+/* Estilo de linha alternada */
+table tbody tr:nth-child(even) {
+    background-color: #F4F9FF;
+}
+
+table tbody tr:hover {
+    background-color: #CCE1FF;
+}
+
+/* Estilos dos botões dentro da tabela */
+button[type="submit"] {
+    padding: 5px 5px;
+    font-size: 0.75em;
+    background-color: #0078E7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-top: 0; /* Remove qualquer margem extra */
+    margin-bottom: 0; /* Remove qualquer margem extra */
+    display: block; /* Torna o botão um bloco para facilitar o alinhamento */
+    align-self: flex-start; /* Alinha o botão ao topo */
+    margin-left: auto; /* Centraliza horizontalmente */
+    margin-right: auto; /* Centraliza horizontalmente */
+}
+
+/* Botões de ação na tabela quando hover */
+button[type="submit"]:hover {
+    background-color: #0056B3;
+}
+
+/* Estilos dos botões de alteração de situação (fora da tabela) */
+button.alterar-situacao {
+    padding: 5px 10px;
+    font-size: 0.75em;
+    background-color: #0078E7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+/* Botões de alteração de situação ao passar o mouse */
+button.alterar-situacao:hover {
+    background-color: #0056B3;
+}
+
+/* Centralização do botão dentro da célula da coluna Ações */
+.actions-cell {
+    display: flex;
+    justify-content: center; /* Centraliza o conteúdo horizontalmente */
+    align-items: center; /* Centraliza o conteúdo verticalmente */
+    position: relative; /* Garantir que a célula tenha uma posição adequada */
+}
+
+/* Estilos do Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 800px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.close-btn {
+    color: #aaa;
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+}
+
+.modal h2 {
+    font-size: 1.6em;
+    margin-bottom: 20px;
+    color: #003C80;
+}
+
+.modal p {
+    font-size: 1em;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.modal-actions {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.modal-actions button {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #0056B3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.modal-actions button:hover {
+    background-color: #003C80;
+}
+
+.excluir-btn {
+    background-color: #D32F2F;
+    color: white;
+}
+
+.excluir-btn:hover {
+    background-color: #C62828;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .modal h2 {
+        font-size: 1.4em;
+    }
+
+    .modal-actions button {
+        width: 100%;
+    }
+}
+/* Estilo para o botão de Voltar dentro da célula "Ações" */
+.voltar-btn {
+    padding: 5px;
+    font-size: 0.875em;
+    background-color: #0078E7;
+    color: white;
+    border: 1px solid #0078E7;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 100%; /* Faz o botão ocupar toda a largura da célula */
+    box-sizing: border-box; /* Inclui o padding no cálculo da largura */
+    margin-top: 5px; /* Espaçamento superior */
+    transition: background-color 0.3s ease;
+}
+
+.voltar-btn:hover {
+    background-color: #0056B3;
+}
+
+/* Ajustar a largura dos campos de filtro para ficarem no mesmo padrão */
+th input {
+    width: 100%; /* Campo de filtro ocupa toda a largura da célula */
+    padding: 5px;
+    font-size: 0.875em;
+    box-sizing: border-box;
+}

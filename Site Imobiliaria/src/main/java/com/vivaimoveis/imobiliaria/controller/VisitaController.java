@@ -1,11 +1,9 @@
 package com.vivaimoveis.imobiliaria.controller;
 
-import com.vivaimoveis.imobiliaria.model.Imovel;
-import com.vivaimoveis.imobiliaria.model.Cliente;
-import com.vivaimoveis.imobiliaria.model.Visita;
-import com.vivaimoveis.imobiliaria.repository.ImovelRepository;
-import com.vivaimoveis.imobiliaria.repository.ClienteRepository;
-import com.vivaimoveis.imobiliaria.repository.VisitaRepository;
+import com.vivaimoveis.imobiliaria.core.entity.Visita;
+import com.vivaimoveis.imobiliaria.core.repository.ImovelRepository;
+import com.vivaimoveis.imobiliaria.core.repository.ClienteRepository;
+import com.vivaimoveis.imobiliaria.core.repository.VisitaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

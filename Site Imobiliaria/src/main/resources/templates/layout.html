@@ -17,14 +17,45 @@
       <li><a th:href="@{/sobre}">Sobre</a></li>
       <li><a th:href="@{/contato}">Contato</a></li>
       <li><a th:href="@{/administrativo}">Administrativo</a></li>
-      <li><a th:href="@{/perfil}">Perfil</a></li>
-      <li><a th:href="@{/login}" class="login-btn">Login</a></li> <!-- Botão de Login com classe especial -->
+
+      <li th:if="${authentication.name != 'anonymousUser'}">
+        <!-- Avatar com submenu flutuante -->
+        <div class="avatar-container">
+          <button class="avatar-btn" id="avatarBtn">
+            <img th:src="@{${avatarExists ? '/images/avatars/' + authentication.name + '.jpg' : '/images/default-avatar.png'}}"
+                 th:alt="${authentication.name}" class="avatar">
+          </button>
+
+          <!-- Submenu flutuante -->
+          <div id="avatarDropdown" class="avatar-dropdown">
+            <div class="avatar-header">
+              <!-- Exibe o nome completo ou nome de login -->
+              <h3 th:text="${fullname != null ? fullname : authentication.name}"></h3>
+
+              <!-- Exibe o cargo (role) -->
+              <p th:text="${authorities.contains('ROLE_MANAGER') ? 'Gerente' :
+            (authorities.contains('ROLE_ADMIN') ? 'Administrador de Sistema' :
+             (authorities.contains('ROLE_USER') ? 'Usuário' : 'Cargo não especificado'))}"></p>
+            </div>
+            <ul>
+              <li><a th:href="@{/perfil}"><i class="fas fa-user"></i> Editar Perfil</a></li>
+              <li><a th:href="@{/meus-imoveis}"><i class="fas fa-home"></i> Meus Imóveis</a></li>
+              <li><a th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </li>
+
+      <li th:if="${authentication.name == 'anonymousUser'}">
+        <a th:href="@{/login}" class="login-btn">Login</a>
+      </li>
     </ul>
   </nav>
 </header>
 
 <main>
-  <section th:fragment="content"> <!-- Fragmento que será substituído -->
+  <section th:fragment="content">
     <p>Conteúdo padrão se nenhum fragmento for fornecido.</p>
   </section>
 </main>
@@ -59,12 +90,34 @@
   </div>
 </footer>
 
-<!-- Script para voltar pro topo ao recarregar pagina -->
+<!-- Script para controlar a abertura do submenu -->
 <script>
-  if ('scrollRestoration' in history) {
-      history.scrollRestoration = 'manual'; // Desativa a restauração automática da posição de rolagem
-  }
-  window.scrollTo(0, 0); // Garante que a página inicie no topo
+  document.addEventListener("DOMContentLoaded", function() {
+    // Obtém os elementos do DOM
+    const avatarBtn = document.getElementById("avatarBtn");
+    const avatarDropdown = document.getElementById("avatarDropdown");
+
+    // Verifica se os elementos existem
+    if (avatarBtn && avatarDropdown) {
+      // Garante que o submenu comece oculto (caso haja um valor inicial indesejado)
+      avatarDropdown.style.display = "none";
+
+      // Alterna a exibição do submenu quando o botão é clicado
+      avatarBtn.addEventListener("click", function(event) {
+        event.stopPropagation(); // Evita que o clique propague para o documento e feche o menu
+        const isDropdownVisible = avatarDropdown.style.display === "block";
+        avatarDropdown.style.display = isDropdownVisible ? "none" : "block"; // Alterna entre ocultar e mostrar
+      });
+
+      // Fecha o submenu se o clique for fora do botão ou do dropdown
+      document.addEventListener("click", function(event) {
+        // Verifica se o clique foi fora do avatarBtn e avatarDropdown
+        if (!avatarBtn.contains(event.target) && !avatarDropdown.contains(event.target)) {
+          avatarDropdown.style.display = "none"; // Esconde o submenu
+        }
+      });
+    }
+  });
 </script>
 </body>
 </html>
